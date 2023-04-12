@@ -52,18 +52,18 @@ export class SmartTableComponent {
       status: {
         title: 'status',
         type: 'html',
+        valuePrepareFunction: (cell, row, companyList) => {
+          const task = taskList.find(x => x.value === cell);
+          if (task) {
+            return task.title;
+          }
+          else {
+  
+            return cell;
+          }
+        },
         editor: {
           type: 'list',
-          valuePrepareFunction: (cell, row, companyList) => {
-            let bn = taskList.find(x => x.value === cell);
-            if (bn) {
-              return bn.title;
-            }
-            else {
-    
-              return cell;
-            }
-          },
           config: {
             selectText: 'Select',
             list: taskList,

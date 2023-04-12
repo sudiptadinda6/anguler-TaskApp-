@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TasksService } from '../tasks.service';
 import { NotificationService } from '../notification.service';
@@ -9,12 +9,14 @@ import { error } from 'console';
   templateUrl: './fileupload.component.html',
   styleUrls: ['./fileupload.component.scss']
 })
+
 export class FileuploadComponent implements OnInit {
 
   constructor(private service: TasksService, private toastrService: NotificationService) { }
 
-  ngOnInit(): void {
+  @ViewChild('form') form;
 
+  ngOnInit(): void {
   }
 
   myForm = new FormGroup({
@@ -36,6 +38,7 @@ export class FileuploadComponent implements OnInit {
         fileSource: file
       });
     }
+   
   }
   submit() {
     const formData = new FormData();
@@ -47,5 +50,9 @@ export class FileuploadComponent implements OnInit {
      (error) => {
       this.toastrService.showMessage(error.error.message)
     })
+  }
+
+  reset() {
+    this.form.nativeElement.reset()
   }
 }
