@@ -1,27 +1,12 @@
- <h1>CSV FILE UPLOAD </h1>
-<form [formGroup]="myForm" (ngSubmit)="submit()">
+ <h1>BEACH TASKS UPLOAD </h1>
+<form [formGroup]="myForm" (ngSubmit)="submit()" #form>
 <nb-card>
     <nb-card-body class="example-items-col" >
         <input type="file" nbInput shape="round" id="file" accept=".csv"
          placeholder="Enter File Upload" (change)="onFileChange($event)" formControlName="file" >
       <button nbButton status="success" shape="round" type="submit">SUBMIT</button>
+      <button nbButton status="success" shape="round" type="reset" (click)="reset()">RESET</button>
     </nb-card-body>
   </nb-card>
 </form> 
        
-<!-- <form >
-  <div class="form-group">
-      <label for="file">File</label>
-      <input 
-          formControlName="file"
-          id="file" 
-          type="file" 
-          class="form-control"
-          (change)="onFileChange($event)">
-      <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-          <div *ngIf="f.file.errors.required">File is required.</div>
-      </div>
-    </div>
-          
-    <button class="btn btn-primary" type="submit">Submit</button>
-</form> -->
